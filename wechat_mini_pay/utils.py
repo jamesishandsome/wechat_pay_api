@@ -11,3 +11,9 @@ def sign_hmac_sha256(stringSign, key):
     stringSign = stringSign.encode('utf-8')
     sign = hmac.new(key,stringSign, digestmod=hashlib.sha256).hexdigest().upper()
     return sign
+
+def sign_rsa_sha256(stringSign, key):
+    key = key.encode('utf-8')
+    stringSign = stringSign.encode('utf-8')
+    sign = base64.b64encode(hmac.new(key,stringSign, digestmod=hashlib.sha256).digest())
+    return sign.decode('utf-8')

@@ -3,7 +3,7 @@ from setuptools import setup, find_packages
 setup(
     name = 'wechat_mini_pay',
     version = '0.0.1',
-    keywords='wechat pay',
+    keywords='wechat pay 微信支付',
     description = 'a library for wechat mini program pay',
     license = 'MIT License',
     url = 'https://github.com/jamesishandsome/wechat_pay_api',
@@ -12,5 +12,5 @@ setup(
     packages = find_packages(),
     include_package_data = True,
     platforms = 'any',
-    install_requires = [],
+    install_requires = ["requests>=2.21.0"],
 )

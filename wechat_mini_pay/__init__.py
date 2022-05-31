@@ -1,14 +1,23 @@
 from .type import SignType
 from .core import Core
 class wechatpay():
-    def __init__(self, appid, mch_id, key, sub_mch_id, notify_url, trade_type='JSAPI'):
-        self.appid = appid
-        self.mch_id = mch_id
-        self.key = key
-        self.sub_mch_id = sub_mch_id
+    def __init__(self, sp_appid, sp_mchid, sub_mchid,description, out_trade_no, notify_url, amount, sp_openid, ):
+        """初始化微信支付类
+        :param sp_appid: 商户appid
+        :param sp_mchid: 商户号
+        :param sub_mchid: 子商户号
+        :param description: 商品描述
+        :param out_trade_no: 商户订单号
+        :param notify_url: 异步通知地址
+        """
+        self.sp_appid = sp_appid
+        self.sp_mchid = sp_mchid
+        self.sub_mchid = sub_mchid
+        self.description = description
+        self.out_trade_no = out_trade_no
         self.notify_url = notify_url
-        self.trade_type = trade_type
-        self._core = Core(mch_id, key,"cert_dir","apiv3_key")
+        self.sign_type = SignType.MD5
+
 
     def sign(self, data, sign_type=SignType.MD5):
         """使用RSAwithSHA256或HMAC_256算法计算签名值供调起支付时使用
